@@ -8,6 +8,96 @@
     <title>Sign Up Form</title>
 </head>
 <body>
-    <h1>Sign Up Form</h1>
+    <div class="container">
+        <div class="left">
+            <div class="logo"> Charlieverse</div>
+            <div class="credit">Photo credit to Timo Wielink</div>
+        </div>
+        <div class="right">
+            <div class="top">This is not a real online service. This is just a tribute you know you
+                need something link this in your life to help you realize your deepest dreams. Sign up 
+                <em>now</em> to get started.
+                <br>
+                <br>
+                You <em>know</em> you want to.
+            </div>
+            <div class="middle">
+                <h2>Let's do this!</h2>
+                <form action="">
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" id="first_name">
+                        </div>
+                        <div class="field">
+                            <label for="first_name">Last Name</label>
+                            <input type="text" name="last_name" id="last_name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email">
+                        </div>
+                        <div class="field">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" name="phone_number" id="phone_number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <input class="error" type="password" name="password" id="password">
+                        </div>
+                        <div class="field">
+                            <label for="password_confirmation">Confirm Password</label>
+                            <input class="error" type="password" name="password_confirmation" id="password_confirmation">
+                            <div class="validation-msg">* Passwords don't match</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="bottom">
+                <button class="submit">Create Account</button>
+                <div>Already have an account? <a href="">Log in</a></div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    const pw = document.querySelector('#password');
+    const pwConf = document.querySelector('#password_confirmation');
+    const pwFields = document.querySelectorAll("input[type=password]");
+    const pwMsg = document.querySelector('.validation-msg');
+
+    function remove_error_state() {
+        pwFields.forEach(element => {
+            element.classList.remove('error');    
+        });
+        pwMsg.style.color = 'rgba(101, 101, 101, 0)';
+    }
+
+    function add_error_state() {
+        pwFields.forEach(element => {
+            element.classList.add('error');    
+        });
+        pwMsg.style.color = 'red';
+    }
+
+    function validate_password_fields() {
+        console.log('input')
+        if (pw.value !== pwConf.value) {
+            add_error_state()
+        } else {
+            remove_error_state()
+        }
+    }
+
+    pwFields.forEach(element => {
+        element.addEventListener('input', validate_password_fields)
+    })
+    
+    
+
+</script>
 </html>
